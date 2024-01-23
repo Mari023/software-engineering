@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04  # Specify the container used to build it (emulates ubuntu 20.04 in this case)
+    runs-on: ubuntu-latest  # Specify the container used to build it (emulates ubuntu 20.04 in this case)
 
     steps:
       - name: Checkout code # Get the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python 2.7 # Due to Python 2.7 being discontinued this is more extensive, for python 3.x the python version can be simply stated
-        uses: MatteoH2O1999/setup-python@v1
+        uses: MatteoH2O1999/setup-python@v3
         with:
           python-version: 2.7
           allow-build: info
@@ -39,7 +39,7 @@ jobs:
           mv dist/contact_manager_solution artifacts/
 
       - name: Upload Artifacts # Upload the artifacts to make them accessible - you will find them in the build summary
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: ContactManagerPython2
           path: artifacts
