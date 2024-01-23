@@ -1,7 +1,8 @@
 import unittest
 from io import StringIO
 from mock import patch
-from contact_manager_task import User, SM
+from contact_manager_task import SM
+
 
 class TestSM(unittest.TestCase):
 
@@ -72,13 +73,14 @@ class TestSM(unittest.TestCase):
         user1.cop(post, "My own post comment")
         self.assertEqual(len(post["cm"]), 1)  # User can comment on their own post
 
-    @patch('sys.stdout', new_callable=StringIO) # mock console to catch output
+    @patch('sys.stdout', new_callable=StringIO)  # mock console to catch output
     def test_tle(self, mock_stdout):
         self.social_media.cu("user3")
         user3 = self.social_media.gu("user3")
         timeline = user3.rt()
         expected_output = "No posts to display.\n"
-        self.assertEqual(mock_stdout.getvalue(), expected_output) 
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
 
 if __name__ == "__main__":
     unittest.main()
