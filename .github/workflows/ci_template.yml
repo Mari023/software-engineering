@@ -35,7 +35,7 @@ jobs:
           # Create the "artifacts" directory if it doesn't exist
           mkdir -p artifacts
           # Move the executable to the "artifacts" directory
-          mv dist/contact_manager_solution artifacts/
+          mv dist/contact_manager_task artifacts/
 
       - name: Upload Artifacts # Upload the artifacts to make them accessible - you will find them in the build summary
         uses: actions/upload-artifact@v4
