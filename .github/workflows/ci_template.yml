@@ -20,7 +20,7 @@ jobs:
 
       - name: Install pyinstaller  #install dependencies - hint: one step per dependency makes debugging easier - also you might need to install more packages
         run: |
-          pip install pyinstaller==3.6
+          pip install pyinstaller
           pip install mock
 
       - name: Install xmllint
