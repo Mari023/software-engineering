@@ -22,7 +22,7 @@ jobs:
         run: pip install pyinstaller==3.6
 
       - name: Install xmllint
-        run: sudo apt-get install -y python-dev
+        run: sudo apt-get install -y python-dev-is-python3
 
       - name: Run tests
         run: python test_sm.py
