@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: 2.7
           allow-build: info
-          cache-build: true
+          cache-build: false
           cache: pip
 
       - name: Install pyinstaller  #install dependencies - hint: one step per dependency makes debugging easier - also you might need to install more packages
