@@ -19,7 +19,9 @@ jobs:
           python-version: '3.12'
 
       - name: Install pyinstaller  #install dependencies - hint: one step per dependency makes debugging easier - also you might need to install more packages
-        run: pip install pyinstaller==3.6
+        run: |
+          pip install pyinstaller==3.6
+          pip install mock
 
       - name: Install xmllint
         run: sudo apt-get install -y python-dev-is-python3
