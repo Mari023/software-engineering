@@ -31,7 +31,7 @@ jobs:
 
       - name: Build Executable
         run: |
-          pyinstaller --onefile contact_manager_solution.py
+          pyinstaller --onefile contact_manager_task.py
           # Create the "artifacts" directory if it doesn't exist
           mkdir -p artifacts
           # Move the executable to the "artifacts" directory
