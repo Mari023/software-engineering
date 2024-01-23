@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Specify the branch where you want tests to run
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04  # Specify the container used to build it (emulates ubuntu 20.04 in this case)
+
+    steps:
+      - name: Checkout code # Get the code
+        uses: actions/checkout@v2
+
+      - name: Set up Python 2.7 # Due to Python 2.7 being discontinued this is more extensive, for python 3.x the python version can be simply stated
+        uses: MatteoH2O1999/setup-python@v1
+        with:
+          python-version: 2.7
+          allow-build: info
+          cache-build: true
+          cache: pip
+
+      - name: Install pyinstaller  #install dependencies - hint: one step per dependency makes debugging easier - also you might need to install more packages
+        run: pip install pyinstaller==3.6
+
+      - name: Install xmllint
+        run: sudo apt-get install -y python-dev
+
+      - name: Run tests
+        run: # Replace with your test command
+
+      - name: Build Executable
+        run: |
+          pyinstaller --onefile contact_manager_solution.py
+          # Create the "artifacts" directory if it doesn't exist
+          mkdir -p artifacts
+          # Move the executable to the "artifacts" directory
+          mv dist/contact_manager_solution artifacts/
+
+      - name: Upload Artifacts # Upload the artifacts to make them accessible - you will find them in the build summary
+        uses: actions/upload-artifact@v1
+        with:
+          name: ContactManagerPython2
+          path: artifacts
+
